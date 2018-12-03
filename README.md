@@ -48,13 +48,28 @@ In short,
 Credits: https://medium.com/@mayashavin
 
  ```
+ function testMe(){
+   while(true){
+      let x = 2;
+      break;
+   }
+   console.log(x); //ReferenceError: x is not defined
+}
+ ```
  
  ```
-
+ var x = 1;
+ {
+   let x = 3;
+ }
+ console.log(x); //Output: 1
+ ```
+ 
 5.  Hoisting:
 
 * Moves all the declarations to the top of current scope 
-* hoisting only applies to declarations, not assignments
+* Hoisting only applies to declarations, not assignments
+* Variable Hoisting doesn’t apply to ```let```
 
  ```
  var x = 0;
