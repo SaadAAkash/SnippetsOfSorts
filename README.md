@@ -3,46 +3,44 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
 
 ## JavaScript
 
-* Short-Circuit Evaluation 
+1. Short-Circuit Evaluation 
 
-```
-var a;
-var b = null;
-var c = undefined;
-var d = 4;
-var e = 'five';
+ 
+  ```
+  var a;
+  var b = null;
+  var c = undefined;
+  var d = 4;
+  var e = 'five';
+  var f = a || b || c || d || e;
+  console.log(f);
 
-var f = a || b || c || d || e;
+  //Output: 4 , since the 6 falsy values in JS are false, 0, “” (empty string), null, undefined, NaN (Not A Number)
+  ```
 
-console.log(f);
-```
+2. == vs ===
 
-Output:
+  ```
+  3 === '3' // Output: false (Number compared to String) -> Strict Equality
+  3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
+  ```
 
-```
-4 // 6 falsy values in JS: false, 0, “” (empty string), null, undefined, NaN (Not A Number)
-```
+3. null, undefined and NaN :
 
-* == vs ===
+  ```
+  null == null
+  undefined == undefined
+  null == undefined
+  //all returns true: null and undefined are only equal to themselves
+  NaN == null
+  NaN == undefined
+  NaN == NaN
+  // all returns false: 
+  NaN isn’t equivalent to anything (not even itself!):
+  ```
 
-```
-3 === '3' // Output: false (Number compared to String) -> Strict Equality
-3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
-```
+4.
 
-* null, undefined and NaN :
-
-```
-null == null
-undefined == undefined
-null == undefined
-//all returns true: null and undefined are only equal to themselves
-NaN == null
-NaN == undefined
-NaN == NaN
-// all returns false: 
-NaN isn’t equivalent to anything (not even itself!):
-```
 
 ## Python
 
