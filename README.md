@@ -25,7 +25,7 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
   3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
   ```
 
-3. null, undefined and NaN :
+3. null, undefined and NaN
 
   ```
   null == null
@@ -39,7 +39,39 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
   NaN isn’t equivalent to anything (not even itself!):
   ```
 
-4.
+4. Function Scoping & Block Scoping (var, let, const)
+
+In short,
+
+<img src="https://cdn-images-1.medium.com/max/1600/1*SntGwD7Wfd2v0S7aPybdzg.png" data-canonical-src="https://cdn-images-1.medium.com/max/1600/1*SntGwD7Wfd2v0S7aPybdzg.png" width="800" height="400" />
+
+Credits: https://medium.com/@mayashavin
+
+ ```
+ 
+ ```
+
+5.  Hoisting:
+
+* Moves all the declarations to the top of current scope 
+* hoisting only applies to declarations, not assignments
+
+ ```
+ var x = 0;
+ y = 1;
+ console.log(sumOf(x,y));
+ var y;
+ function sumOf(a, b){ return a + b; }
+ ```
+ will be processed as:
+ ```
+ var x;
+ var y;
+ function sumOf(a, b){ return a + b; }
+ x = 0;
+ y = 1;
+ console.log(sumOf(x,y));
+ ```
 
 
 ## Python
