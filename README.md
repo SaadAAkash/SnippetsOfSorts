@@ -129,16 +129,27 @@ Credits: https://medium.com/@mayashavin
  ```
 
  * IIFE:
-
+  * A function expression followed by () which tells the JavasScript compiler to invoke or call immediately
+  * Any variables declared inside the IIFE are not accessible from the outside world.
+  
  ```
- let myFunction = function(p1, p2){
+ (
+ function(p1, p2){
      return p1 * p2;
  }
- alert(myFunction(4,3));
+ )();
  //12
  ```
-
-
+ 
+  * IIFE with Arrow ES6:
+ 
+ ```
+ (
+ ()=> alert(2 * 3)
+ )();
+ //12
+ ```
+ 
 ## Python
 
 * [CSV to JSON](https://github.com/Interspeed/CSVtoJSONPy)
