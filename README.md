@@ -3,47 +3,153 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
 
 ## JavaScript
 
-* Short-Circuit Evaluation 
+#### Short-Circuit Evaluation 
 
-```
-var a;
-var b = null;
-var c = undefined;
-var d = 4;
-var e = 'five';
+ 
+  ```
+  var a;
+  var b = null;
+  var c = undefined;
+  var d = 4;
+  var e = 'five';
+  var f = a || b || c || d || e;
+  console.log(f);
 
-var f = a || b || c || d || e;
+  //Output: 4 , since the 6 falsy values in JS are false, 0, “” (empty string), null, undefined, NaN (Not A Number)
+  ```
 
-console.log(f);
-```
+#### == vs ===
 
-Output:
+  ```
+  3 === '3' // Output: false (Number compared to String) -> Strict Equality
+  3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
+  ```
 
-```
-4 // 6 falsy values in JS: false, 0, “” (empty string), null, undefined, NaN (Not A Number)
-```
+#### null, undefined and NaN
 
-* == vs ===
+  ```
+  null == null
+  undefined == undefined
+  null == undefined
+  //all returns true: null and undefined are only equal to themselves
+  NaN == null
+  NaN == undefined
+  NaN == NaN
+  // all returns false: 
+  NaN isn’t equivalent to anything (not even itself!):
+  ```
 
-```
-3 === '3' // Output: false (Number compared to String) -> Strict Equality
-3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
-```
+#### Function Scoping & Block Scoping (var, let, const)
 
-* null, undefined and NaN :
+In short,
 
-```
-null == null
-undefined == undefined
-null == undefined
-//all returns true: null and undefined are only equal to themselves
-NaN == null
-NaN == undefined
-NaN == NaN
-// all returns false: 
-NaN isn’t equivalent to anything (not even itself!):
-```
+<img src="https://cdn-images-1.medium.com/max/1600/1*SntGwD7Wfd2v0S7aPybdzg.png" data-canonical-src="https://cdn-images-1.medium.com/max/1600/1*SntGwD7Wfd2v0S7aPybdzg.png" width="800" height="400" />
 
+Credits: https://medium.com/@mayashavin
+
+ ```
+ function testMe(){
+   while(true){
+      let x = 2;
+      break;
+   }
+   console.log(x); //ReferenceError: x is not defined
+}
+ ```
+ 
+ ```
+ var x = 1;
+ {
+   let x = 3;
+ }
+ console.log(x); //Output: 1
+ ```
+ 
+ ```
+ var x = 5;
+ let y = 4;
+ console.log(this.x); //5
+ console.log(window.x); //5
+ console.log(this.y); //let doesn’t create a property on global object
+ console.log(window.y); //same reason
+ ```
+ 
+####  Hoisting
+
+ * Moves all the declarations to the top of current scope 
+ * Hoisting only applies to declarations, not assignments
+ * Variable Hoisting doesn’t apply to ```let```, means during compile phase, ```let``` declaration will stay where it is and will not be processed first among other code , will not move to the top of context like ```var```
+
+ ```
+ var x = 0;
+ y = 1;
+ console.log(sumOf(x,y));
+ var y;
+ function sumOf(a, b){ return a + b; }
+ ```
+ will be processed as:
+ ```
+ var x;
+ var y;
+ function sumOf(a, b){ return a + b; }
+ x = 0;
+ y = 1;
+ console.log(sumOf(x,y));
+ ```
+ 
+#### Function Declaration, Function Expression & IIFE (Immediately Invoked Function Expression)
+
+ * Function Declaration:
+ ```
+ function mult(p1, p2) {
+     return p1 * p2;
+ }
+ alert(mult(4, 3));
+ //12
+ ```
+
+ * Function Expression:
+
+ ```
+ let mult = function(p1, p2){
+     return p1 * p2;
+ }
+ alert(mult(4,3));
+ //12
+ ```
+ 
+ * Function Expression (using arrow func of ES6):
+
+ ```
+ let mult = (p1, p2)=>{
+     return p1 * p2;
+ }   //OR, let mult = (p1, p2)=> p1 * p2;
+ alert(mult(4,3));
+ //12
+ ```
+
+ * IIFE:
+  * A function expression followed by () which tells the JavasScript compiler to invoke or call immediately
+  * Any variables declared inside the IIFE are not accessible from the outside world.
+  
+ ```
+ (
+ function(p1, p2){
+     return p1 * p2;
+ }
+ )();
+ //12
+ ```
+ 
+  * IIFE with Arrow ES6:
+ 
+ ```
+ (
+ ()=> alert(2 * 3)
+ )();
+ //12
+ ```
+ 
 ## Python
 
 * [CSV to JSON](https://github.com/Interspeed/CSVtoJSONPy)
