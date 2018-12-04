@@ -3,7 +3,7 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
 
 ## JavaScript
 
-1. Short-Circuit Evaluation 
+#### Short-Circuit Evaluation 
 
  
   ```
@@ -18,14 +18,14 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
   //Output: 4 , since the 6 falsy values in JS are false, 0, “” (empty string), null, undefined, NaN (Not A Number)
   ```
 
-2. == vs ===
+#### == vs ===
 
   ```
   3 === '3' // Output: false (Number compared to String) -> Strict Equality
   3 == '3'  // Outpt: true -> Loose Equality: Allows to convert the values into a common type
   ```
 
-3. null, undefined and NaN
+#### null, undefined and NaN
 
   ```
   null == null
@@ -39,7 +39,7 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
   NaN isn’t equivalent to anything (not even itself!):
   ```
 
-4. Function Scoping & Block Scoping (var, let, const)
+#### Function Scoping & Block Scoping (var, let, const)
 
 In short,
 
@@ -65,11 +65,20 @@ Credits: https://medium.com/@mayashavin
  console.log(x); //Output: 1
  ```
  
-5.  Hoisting:
+ ```
+ var x = 5;
+ let y = 4;
+ console.log(this.x); //5
+ console.log(window.x); //5
+ console.log(this.y); //let doesn’t create a property on global object
+ console.log(window.y); //same reason
+ ```
+ 
+####  Hoisting
 
-* Moves all the declarations to the top of current scope 
-* Hoisting only applies to declarations, not assignments
-* Variable Hoisting doesn’t apply to ```let```
+ * Moves all the declarations to the top of current scope 
+ * Hoisting only applies to declarations, not assignments
+ * Variable Hoisting doesn’t apply to ```let```, means during compile phase, ```let``` declaration will stay where it is and will not be processed first among other code , will not move to the top of context like ```var```
 
  ```
  var x = 0;
@@ -86,6 +95,47 @@ Credits: https://medium.com/@mayashavin
  x = 0;
  y = 1;
  console.log(sumOf(x,y));
+ ```
+ 
+#### Function Declaration, Function Expression & IIFE (Immediately Invoked Function Expression)
+
+ * Function Declaration:
+ ```
+ function mult(p1, p2) {
+     return p1 * p2;
+ }
+ alert(mult(4, 3));
+ //12
+ ```
+
+ * Function Expression:
+
+ ```
+ let mult = function(p1, p2){
+     return p1 * p2;
+ }
+ alert(mult(4,3));
+ //12
+ ```
+ 
+ * Function Expression (using arrow func of ES6):
+
+ ```
+ let mult = (p1, p2)=>{
+     return p1 * p2;
+ }   //OR, let mult = (p1, p2)=> p1 * p2;
+ alert(mult(4,3));
+ //12
+ ```
+
+ * IIFE:
+
+ ```
+ let myFunction = function(p1, p2){
+     return p1 * p2;
+ }
+ alert(myFunction(4,3));
+ //12
  ```
 
 
