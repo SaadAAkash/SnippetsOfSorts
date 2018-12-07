@@ -99,6 +99,7 @@ Credits: https://medium.com/@mayashavin
  
 #### Function Declaration, Function Expression & IIFE (Immediately Invoked Function Expression)
 
+* A small note: A child function can access to its parent function's variables, function & objects
  * Function Declaration:
  ```
  function mult(p1, p2) {
@@ -150,6 +151,59 @@ Credits: https://medium.com/@mayashavin
  //12
  ```
  
+ #### Closure
+  
+  * A closure is the combination of a function and the lexical environment within which that function was declared
+  * In simpler words, a child function can access its parent function's var,func & obj even after parent function has been returned and Closure enables this access. These var, func & obj are stored in a reference to its lexical environment.
+  
+  ```
+  function makeFunc() { // parent function
+    var name = 'Mozilla';
+    function displayName() {  //child function: uses a parent function variable, name
+      alert(name);
+    }
+    return displayName;
+  }
+
+  var myFunc = makeFunc(); //var myFunc is a reference to the instance of function displayName()
+  myFunc();
+  // this code works since displayName() maintains a reference to its lexical environment, within which the var name exists
+  //Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+  ```
+
+#### Call, Apply, Bind
+
+ * call() and apply() serve the exact same purpose. The only difference: 
+   call() : parameters are passed individually
+   apply(): parameters are passed as an array
+ * bind() method creates a new function, call()/apply() doesn't make a copy of the fucntion, they just execute the function right away with the params
+ 
+ ```
+ var pokemon = {
+     firstname: 'Pika',
+     getPokeName: function() {
+         return this.firstname;
+     }
+ };
+
+ var pokemonName = function(snack, hobby) {
+     console.log(this.getPokeName() + 'I choose you!');
+     console.log(this.getPokeName() + ' loves ' + snack + ' and ' + hobby);
+ };
+
+ var logPokemon = pokemonName.bind(pokemon); // creates new object and binds pokemon. 'this' of pokemon === pokemon now
+
+ logPokemon('sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
+
+ pokemonName.call(pokemon,'sushi', 'algorithms'); // Pika Chu  loves sushi and algorithms
+
+ pokemonName.apply(pokemon,['sushi', 'algorithms']); // Pika Chu  loves sushi and algorithms
+ ```
+
+
+
+
+
 ## Python
 
 * [CSV to JSON](https://github.com/Interspeed/CSVtoJSONPy)
