@@ -282,7 +282,34 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
 
 ## Python
 
-* [CSV to JSON](https://github.com/Interspeed/CSVtoJSONPy)
-* [HTTP Server One Liners](https://gist.github.com/SaadAAkash/d8e9ef3fcdd5040d1ba8981bdf43bab3)
-* [YouTube Sentiment Analysis](https://github.com/realpython/python-scripts/blob/master/scripts/31_youtube_sentiment.py)
-* [Some more interesting ones](https://github.com/realpython/python-scripts/)
+ * [CSV to JSON](https://github.com/Interspeed/CSVtoJSONPy)
+ * [HTTP Server One Liners](https://gist.github.com/SaadAAkash/d8e9ef3fcdd5040d1ba8981bdf43bab3)
+ * [YouTube Sentiment Analysis](https://github.com/realpython/python-scripts/blob/master/scripts/31_youtube_sentiment.py)
+ * [Some more interesting ones](https://github.com/realpython/python-scripts/)
+
+## Other algo short codes
+
+* For JS short codes & functions, head over [here](https://30secondsofcode.org/) and search anything from Strings to Browser to Infinity!
+
+* Fizz Buzz Problem
+
+   ```
+   for(i=0;i<100;)
+   	console.log( (++i%3?"":"Fizz") + (i%5?"":"Buzz") || i)
+   ```
+
+* String Reverse
+   
+   ```
+   function stringReverse(str) {
+   return str.split('').reverse().join('');
+   }
+   stringReverse('  no strings   attached');
+   ```
+   ES6:
+   ```
+   let stringReverse = (str) => {
+      return str.split('').reverse().join('');
+   }
+   stringReverse('  no strings   attached');
+   ```   
