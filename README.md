@@ -200,6 +200,82 @@ Credits: https://medium.com/@mayashavin
  pokemonName.apply(pokemon,['sushi', 'algorithms']); // Pika Chu  loves sushi and algorithms
  ```
 
+#### ```this``` is ```new```
+
+ 1. If ```apply``` or ```call``` or ```bind``` is used to call a function, ```this``` inside the function is the object that is passed as the argument
+ 2. If the ```new``` keyword is used to call the function, ```this``` inside the function is a brand new object.
+ 3. If a function is called on an object, ```this``` inside the function is the object.
+ 4. If a function was invoked without any of the conditions above, ```this``` is the global object (In a browser, it’s ```window```)
+ 
+ ```
+  var obj = {
+     siht: "this is siht"
+ };
+
+ function myFun() {
+     return this // What is `this` here?
+ }
+
+ obj.fun = myFun;
+
+ console.log("this is window:", obj.fun() == window); // false
+ console.log("this is obj:", obj.fun() == obj); // true
+ //rule3
+ ```
+ 
+  ```
+  function ObjConstructor(name) { 
+  this.name = name;
+     console.log(this);
+ }
+ var obj1 = new ObjConstructor('Saad Ahmed Al Jubaer Akash'); // now, this is obj1: rule 02
+ ObjConstructor('Saad Ahmed Al Jubaer Akash'); // now, this is window : rule 04
+ var obj2 = new ObjConstructor('Saad Ahmed Akash'); // now, this is obj2: rule 02
+ //rule2: if new is used, function is a brand new object
+ 
+ Output:
+ ObjConstructor {name: "Saad Ahmed Al Jubaer Akash"}
+ Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …}
+ ObjConstructor {name: "Saad Ahmed Akash"}
+ ```
+ 
+ ```
+  function myFun() {
+     return this; // What is `this` here?
+ }
+ var obj = {
+     someData: "a string"
+ };
+ console.log("this is window:", myFun.call(obj) == window); // false
+ console.log("this is obj:", myFun.call(obj) == obj); //true
+ //rule1
+ ```
+ 
+ * Two tricky snippets:
+ 
+ ```
+ var obj = {
+     myMethod: function () {
+         return this; // What is `this` here?
+     }
+ };
+ var myFun = obj.myMethod;
+ console.log("this is window:", myFun() == window); // true
+ console.log("this is obj:", myFun() == obj); // false
+ ```
+ Here, ```this``` is the global object (or, window) because myFun/obj.myMethod is not called on an object (rule 4)
+ 
+ ```
+  function myFun() {
+     return this; // What is `this` here?
+ }
+ var obj = {
+     myMethod: function () {
+         eval("myFun()");
+     }
+ };
+ ```
+ Here, again ```this``` is the global object (or, window) because myFun is not called on an object (rule 4)
 
 
 
