@@ -277,6 +277,71 @@ Scripts for boring stuffs. Snippets for teasing brain-cells. That's it.
      ```
      Here, again ```this``` is the global object (or, window) because myFun is not called on an object (rule 4)
 
+#### Asynchronous : Promise, Async, Await & Then in NodeJS
+  
+  * Async allows to perform multiple tasks without blocking the normal functioning of program
+  * JS is single threaded, there's no background threads
+  
+  ##### Promise with Then
+  
+   ```
+   const https = require('https');
+
+   // Our Long Operation  
+   function fetchData(url) {
+     const promiseToken = new Promise((resolve, reject) => {
+       https.get(url, (response) => {
+         let data = '';
+         response.on('data', (rd) => data = data + rd);
+         response.on('end', () => resolve(data));
+       });
+     });
+     return promiseToken;
+   }
+
+   console.log('Program Starts');
+
+   const promiseToken = fetchData('https://www.javascript.com/');
+   promiseToken.then((promisedData) => {
+    console.log(promisedData.length);
+   });
+
+   console.log('Program Ends'); 
+   //Ref: https://www.youtube.com/watch?v=r_X-PLoz1lE
+   ```
+   
+   ##### Promise with Async, Await
+  
+   ```
+    const https = require('https');
+
+    // Our Long Operation  
+    function fetchData(url) {
+
+      const promiseToken = new Promise((resolve, reject) => {
+        https.get(url, (response) => {
+          let data = '';
+          response.on('data', (rd) => data = data + rd);
+          response.on('end', () => resolve(data));
+        });
+      });
+
+      return promiseToken;
+    }
+
+    async function read() {
+        const promisedData = await fetchData('https://www.javascript.com/');
+        console.log(promisedData.length);
+    };
+
+
+    console.log('Program Starts');
+
+    read();
+
+    console.log('Program Ends');
+   //Ref: https://www.youtube.com/watch?v=r_X-PLoz1lE
+   ```
 
 
 
